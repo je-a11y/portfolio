@@ -1,0 +1,41 @@
+/* 방명록 · 문의 · 방문자 수 (portfolio.html, portfolio-3d.html 공통) */
+
+/* Supabase 연결 전에는 관련 영역을 모두 숨김 */
+html:not(.live-on) .live { display:none !important; }
+
+/* 메뉴가 6개로 늘어나므로 높이가 낮은 화면에서도 들어가게 간격을 조금 줄임 */
+html.live-on .side nav ul { margin-top:44px; }
+html.live-on .side nav a { padding:7px 0; }
+
+.lform { display:grid; gap:10px; margin:20px 0 8px; }
+.lform .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.lform input, .lform textarea { width:100%; font:inherit; font-size:14.5px; color:var(--ink); background:var(--hover);
+  border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+.lform .short { max-width:240px; }
+.lform textarea { min-height:96px; resize:vertical; line-height:1.6; }
+.lform input::placeholder, .lform textarea::placeholder { color:var(--mute); }
+.lform input:focus-visible, .lform textarea:focus-visible { outline:2px solid var(--accent); outline-offset:1px; border-color:transparent; }
+.lform button { justify-self:start; font:inherit; font-size:13.5px; font-weight:500; color:var(--accent); background:var(--chip);
+  border:1px solid transparent; border-radius:999px; padding:7px 18px; cursor:pointer; transition:border-color .2s; }
+.lform button:hover { border-color:var(--accent); }
+.lform button:disabled { opacity:.5; cursor:default; border-color:transparent; }
+.lform .hp { position:absolute; left:-9999px; width:1px; height:1px; }  /* 자동 등록 프로그램을 거르는 숨은 칸 */
+
+.lmsg { min-height:1.75em; font-size:13px; color:var(--mute); margin:0 0 8px; }
+.lmsg.ok { color:var(--accent); }
+.lmsg.err { color:#f87171; }
+:root[data-theme="light"] .lmsg.err { color:#dc2626; }
+
+.gb-list { list-style:none; margin:16px 0 0; padding:0; }
+.gb-list li { padding:14px 0; border-bottom:1px solid var(--line); }
+.gb-list .who { color:var(--ink); font-weight:500; font-size:14.5px; }
+.gb-list .at { color:var(--mute); font-size:12px; margin-left:8px; }
+.gb-list .txt { margin:4px 0 0; font-size:14.5px; white-space:pre-wrap; }
+.gb-list .empty { color:var(--mute); font-size:13.5px; border-bottom:0; }
+
+.visits b { color:var(--ink); font-weight:500; }
+
+@media (max-width:560px) {
+  .lform .row { grid-template-columns:1fr; }
+  .lform .short { max-width:none; }
+}

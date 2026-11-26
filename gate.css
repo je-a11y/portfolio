@@ -1,0 +1,42 @@
+/* 로그인 화면 */
+:root { --bg:#0b1220; --ink:#e2e8f0; --sub:#94a3b8; --mute:#64748b; --line:#1e293b; --accent:#7cb4ff; --field:rgba(30,41,59,.5); --err:#f87171; }
+* { box-sizing:border-box; }
+html, body { height:100%; }
+body { margin:0; background:var(--bg); color:var(--sub); font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+  font-size:15px; line-height:1.7; -webkit-font-smoothing:antialiased; word-break:keep-all; }
+
+/* 화면 전환: loading(불러오는 중) · login(로그인 화면) · page(포트폴리오) */
+.gate, .wait, #frame { display:none; }
+body[data-view="login"] .gate { display:grid; }
+body[data-view="loading"] .wait { display:block; }
+body[data-view="page"] #frame { display:block; }
+
+.gate { min-height:100%; place-items:center; padding:32px 16px;
+  background:radial-gradient(600px at 50% 20%, rgba(37,99,235,.13), transparent 80%); }
+.card { width:100%; max-width:380px; }
+.card h1 { margin:0; color:var(--ink); font-size:40px; font-weight:700; letter-spacing:-1.5px; line-height:1.15; }
+.card .role { margin:8px 0 0; color:var(--ink); font-size:18px; font-weight:500; }
+.card .lead { margin:14px 0 28px; }
+
+.tabs { display:flex; gap:6px; margin-bottom:18px; }
+.tabs button { flex:1; font:inherit; font-size:13.5px; font-weight:500; color:var(--sub); background:none; border:1px solid var(--line);
+  border-radius:8px; padding:8px 10px; cursor:pointer; }
+.tabs button:hover { color:var(--ink); border-color:var(--mute); }
+.tabs button[aria-pressed="true"] { color:var(--accent); border-color:var(--accent); background:rgba(124,180,255,.1); }
+
+#auth { display:grid; gap:14px; }
+#auth label { display:grid; gap:6px; font-size:13px; color:var(--sub); }
+#auth input { width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--field); border:1px solid var(--line);
+  border-radius:8px; padding:11px 12px; }
+#auth input::placeholder { color:var(--mute); }
+#auth input:focus-visible, .tabs button:focus-visible, #go:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+#go { margin-top:4px; font:inherit; font-size:15px; font-weight:700; color:var(--bg); background:var(--accent); border:0; border-radius:8px;
+  padding:12px; cursor:pointer; }
+#go:hover { filter:brightness(1.08); }
+#go:disabled { opacity:.55; cursor:default; }
+
+.msg { min-height:1.7em; margin:14px 0 0; font-size:13.5px; color:var(--err); }
+.hint { margin:6px 0 0; font-size:13px; color:var(--mute); }
+
+.wait { position:fixed; inset:0; margin:0; padding-top:40vh; text-align:center; color:var(--mute); font-size:14px; }
+#frame { position:fixed; inset:0; width:100%; height:100%; border:0; background:var(--bg); }
